@@ -2,7 +2,7 @@
 import random
 
 def getFrom():
-    user = input('Please enter rock, paper, or scissors: ').lower()
+    user = input('Please enter rock, paper, or scissors: ').lower()  #convrt to lower incase user enters in upper.
     while not (user == 'rock' or user == 'paper' or user == 'scissors'):
         print('Illegal input!')
         user = input('Enter rock, paper, or scissors: ').lower()
@@ -38,8 +38,13 @@ def continue_game(user_counter, computer_counter):
         print('\033[93mGreat lets play again!\033[0m ')
         check(user_counter, computer_counter)       #wants to continu so call the fuction again
     else:
-        print(f'you won \033[92m{len(user_counter)}\033[0m times!, and lost \033[91m{len(computer_counter)}\033[0m times.')
-        print('\033[96m+++++++++ Good game! Hope to see you again! +++++++++\033[0m')
+        confirm = input('\033[95mAre you sure you want to leave? (If so answer exit)\033[0m ').lower()
+        if confirm != 'exit':
+            print('\033[93mGreat lets play again!\033[0m ')
+            check(user_counter, computer_counter)
+        else:
+            print(f'you won \033[92m{len(user_counter)}\033[0m times!, and lost \033[91m{len(computer_counter)}\033[0m times.')
+            print('\033[96m+++++++++ Good game! Hope to see you again! +++++++++\033[0m')
 
 print('\033[96m+++++++ Hello and welcome to the game of rock, paper, and scissors! +++++++\033[0m')
 # initialize counters to keep track of the user's wins and the computer's wins
